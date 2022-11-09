@@ -1,0 +1,232 @@
+$large: "( max-width: 1599px )";
+$large-semi: "( max-width: 1199px )";
+$medium: "( max-width: 899px )";
+$small: "( max-width: 767px )";
+$mobile: " (max-width: 539px) ";
+$gradient: linear-gradient(45deg, #01f8e7, #001299);
+
+@mixin space() {
+  display: block;
+  content: "";
+}
+
+ul::after,
+section::after {
+  @include space();
+  clear: both;
+}
+
+body {
+  font: {
+    font-family: "Press Start 2P", cursive;
+    size: 10px;
+  }
+}
+
+header {
+  position: fixed;
+  width: 400px;
+  height: 100%;
+  background-image: $gradient;
+  top: 0;
+  left: 0;
+
+  h1 {
+    position: absolute;
+    top: 50%;
+    left: 25px;
+    transform: translateY(-150%);
+    color: #fff;
+    letter-spacing: 0.04em;
+    font: {
+      size: 5em;
+      weight: 600;
+    }
+    &::after {
+      @include space;
+      width: 215px;
+      height: 2px;
+      background-color: #fff;
+    }
+    &::before {
+      @include space;
+      bottom: -1.5em;
+      position: absolute;
+      content: "FRONTEND GALLERY";
+      font-size: 0.35em;
+      opacity: 0.7;
+    }
+    @media #{$large} {
+      left: 30px;
+    }
+    @media #{$large-semi} {
+      transform: translateY(-50%);
+      font-size: 3.5em;
+      &::after {
+        width: 150px;
+      }
+      &::before {
+        display: none;
+      }
+    } // $large-semi End
+
+    @media #{$mobile} {
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3.5em;
+      &::after {
+        width: 20px;
+      }
+    }
+  } // h1 End
+
+  .sns {
+    position: absolute;
+    bottom: 100px;
+    right: 8em;
+    li {
+      float: left;
+      margin: 0 1em;
+      a {
+        color: #fff;
+        font-size: 1.3em;
+        i {
+          font-size: 1.3em;
+        }
+      }
+    }
+
+    span {
+      @media #{$medium} {
+        display: none;
+      }
+    }
+
+    @media #{$large-semi} {
+      bottom: 30px;
+      right: 1em;
+    }
+
+    @media #{$mobile} {
+      display: none;
+    }
+  } // sns End
+
+  //1600보다 작아졌을 때
+  @media #{$large} {
+    width: 350px;
+  }
+
+  //1200보다 작아졌을 때
+  @media #{$large-semi} {
+    width: 100%;
+    height: 80px;
+    position: relative;
+  }
+} // header End
+
+main {
+  margin-left: 400px;
+  padding: 20px;
+
+  //1600보다 작아졌을 때
+  @media #{$large} {
+    margin-left: 350px;
+  }
+
+  @media #{$large-semi} {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+nav {
+  margin-bottom: 10px;
+  .btns {
+  }
+  li {
+    float: right;
+    width: 100px;
+    height: 25px;
+    margin-left: 20px;
+
+    a {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      font: {
+        size: 1.8em;
+        weight: normal;
+      }
+      color: #999;
+      text-align: center;
+      line-height: 25px;
+      letter-spacing: 0.1em;
+
+      &:hover {
+        background: $gradient;
+        color: #fff;
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+      }
+    }
+
+    @media #{$mobile} {
+      width: 33.33%;
+      margin-left: 0;
+      text-align: center;
+
+      a {
+        width: 90%;
+      }
+    }
+
+    &.on a {
+      background: $gradient;
+      color: #fff;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+  }
+}
+
+article {
+  width: 20%;
+  float: left;
+  padding: 15px;
+  div {
+    box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+    padding: 15px;
+  }
+  img {
+    width: 100%;
+  }
+  h2 {
+    letter-spacing: 0.02em;
+    margin: 10px 0 5px;
+    color: #444;
+
+    font: {
+      size: 1.9em;
+      weight: bold;
+    }
+  }
+  p {
+    font-size: 1.3em;
+    color: #777;
+  }
+
+  @media #{$large} {
+    width: 25%;
+  }
+  @media #{$medium} {
+    width: 33.33%;
+  }
+  @media #{$small} {
+    width: 50%;
+  }
+  @media #{$mobile} {
+    width: 100%;
+  }
+}
